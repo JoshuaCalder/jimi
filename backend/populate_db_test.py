@@ -15,6 +15,7 @@ if __name__ == '__main__':
 	Tracks.objects.all().delete()
 
 	u1 = Users.objects.create(
+		# not an actual user id
 		user_id = 'f9d2e99224f002e99a9a6fc42dd7',
 		user_party = Parties.objects.create(
 			party_id = 1
