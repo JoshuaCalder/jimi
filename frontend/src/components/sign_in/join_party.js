@@ -14,6 +14,7 @@ class JoinParty extends Component{
 					userId: props.uuid,
 					partyId: null,
 					redirect: false,
+					redirectUrl: null,
 		};
 	}
 	componentDidMount() {
@@ -35,6 +36,10 @@ class JoinParty extends Component{
 		axios.post( endpoint, body )
 			.then( response => {
 				console.log(response.data);
+				if(response.data === 'success'){
+					this.redirectToTrackList();
+					this.props.updateState('partyCode', this.state.partyCode);
+				}
 			})
 			.catch( err => {
 				console.log(err);
@@ -50,10 +55,17 @@ class JoinParty extends Component{
 		console.log(e.target.value);
 	}
 
+	redirectToTrackList = () => {
+		this.setState({
+			redirect: true,
+			redirectUrl: '/tracklist',
+		});
+	}
 	redirectToCreateParty = () => {
 		console.log('redirecting');
 		this.setState({
 			redirect: true,
+			redirectUrl: '/createparty'
 		});
 	}
 
@@ -64,7 +76,7 @@ class JoinParty extends Component{
 	render(){
 		if(this.state.redirect){
 			return(
-				this.props.handleRedirect('/createParty')
+				this.props.handleRedirect(this.state.redirectUrl)
 			);
 		}
 		return(

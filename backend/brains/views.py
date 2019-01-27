@@ -48,7 +48,7 @@ def join_party(request):
 	user.save()
 	
 	print(f"Party joined")
-	return HttpResponse('user ' + str(body['user_uuid']) + 'added to party')
+	return HttpResponse('success')
 
 # not yet implemented
 # @param party_id
