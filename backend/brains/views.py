@@ -13,28 +13,27 @@ from brains.models import Users
 # return 6 digit numeric code
 def create_party(request):
 	body = json.loads(request.body)
-	party_admin = body['party_admin']
-	party_name = body['party_name']
-	party_code = random.randint(100000, 999999)
 	Parties.objects.create(
-		party_admin = party_admin,
-		party_name = party_name,
-		party_code = party_code,
+		party_admin = body['party_admin'],
+		party_name = body['party_name'],
+		party_code = random.randint(100000, 999999),
 	)
 	return HttpResponse(party_code)
 
-# @param party_id
+# @param party_code
 # @param user_id
 # registers a user to a party
 def join_party(request):
 	body = json.loads(request.body)
 	user_id = body['user_id']
-	party_id = body['party_id']
+	party_code = body['party_code']
+	user_party = Parties.objects.values('id').filter(party_code = party_code)
+	# todo: check if party exists before adding
 	Users.objects.create(
 		user_id = user_id,
-		party_id = party_id,
+		user_party = user_party[0],
 	)
-	return HttpResponse('User ' + str(user_id) + ' successfully added to party ' + str(party_id))
+	return HttpResponse('hi')
 
 # @param party_id
 # returns list of all top songs associated with a party
