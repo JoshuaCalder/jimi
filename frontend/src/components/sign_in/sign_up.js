@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextInput from '../inputs/text_input';
 
-class LogIn extends Component{
+class SignUp extends Component{
 	constructor(props){
 			super(props);
 			this.state = {
@@ -26,6 +26,7 @@ class LogIn extends Component{
 	render(){
 		return(
 			<React.Fragment>
+				<h1> Sign Up </h1>
 				<TextInput 
 					label={"Email"}
 					name={'email'}
@@ -34,7 +35,13 @@ class LogIn extends Component{
 					type={'email'}
 					handleTextChange={this.handleTextChange}
 					/>
-
+				<TextInput 
+					label={"Spotify Username"}
+					name={'spotifyUsername'}
+					id={'spotifyUsername'}
+					type={'text'}
+					handleTextChange={this.handleTextChange}
+					/>	
 				<TextInput 
 					label={"Password"}
 					name={'password'}
@@ -43,11 +50,11 @@ class LogIn extends Component{
 					handleTextChange={this.handleTextChange}
 					/>				
 				
-					<button type="button" className="btn btn-success" onClick={this.submit}>Login</button>
+					<button type="button" className="btn btn-success" onClick={this.submit}>Sign Up</button>
 
 			</React.Fragment>
 		);
 	}
 }
 
-export default LogIn;
+export default SignUp;

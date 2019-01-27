@@ -10,12 +10,14 @@ class JoinParty extends Component{
 					partyId: null,
 		};
 	}
+
 	handleTextChange = (e, id) => {
 		this.setState({
 			[e.target.id]: e.target.value,
 		});
 		console.log(e.target.value);	
 	}
+
 	submit = () => {
 		console.log(this.state);
 	}
@@ -31,7 +33,7 @@ class JoinParty extends Component{
 					type={'text'}
 					handleTextChange={this.handleTextChange}
 					/>
-				<button type="button" className="btn btn-success" onClick={this.submit}>Success</button>
+				<button type="button" className="btn btn-success" onClick={this.submit}>Join Party</button>
 			</div>
 		);
 	}
