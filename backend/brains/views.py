@@ -4,6 +4,7 @@ from django.http import HttpResponse
 import random, json
 
 from brains.models import Parties
+from brains.models import Users
 
 # @param party_admin
 # @param party_name
@@ -27,9 +28,13 @@ def create_party(request):
 # registers a user to a party
 def join_party(request):
 	body = json.loads(request.body)
-	party_id = body['party_id']
 	user_id = body['user_id']
-	return HttpResponse('party_id: ' + str(party_id) + ' user_id: ' + str(user_id))
+	party_id = body['party_id']
+	Users.objects.create(
+		user_id = user_id,
+		party_id = party_id,
+	)
+	return HttpResponse('User ' + str(user_id) + ' successfully added to party ' + str(party_id))
 
 # @param party_id
 # returns list of all top songs associated with a party
