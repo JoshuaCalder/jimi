@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import  TextInput  from '../inputs/text_input';
+import './join_party.css';
 
 class JoinParty extends Component{
 	constructor(props){
@@ -15,7 +16,7 @@ class JoinParty extends Component{
 		this.setState({
 			[e.target.id]: e.target.value,
 		});
-		console.log(e.target.value);	
+		console.log(e.target.value);
 	}
 
 	submit = () => {
@@ -24,18 +25,19 @@ class JoinParty extends Component{
 
 	render(){
 		return(
-			<div>
-				<h1>Join The Party.</h1>
-				<h3>Sign in with <a href="https://spotify.com">Spotify</a> to play your songs.</h3>
-				<TextInput 
+			<div className="join-party-container">
+				<TextInput
 					label={"Party Identifier"}
 					name={'partyId'}
 					id={'partId'}
 					placeHolder={'000-000'}
 					type={'text'}
+					class={'center-place-holder'}
 					handleTextChange={this.handleTextChange}
 					/>
-				<button type="button" className="btn btn-success" onClick={this.submit}>Join Party</button>
+					<div className="fluid">
+						<button type="button" className="btn btn-success btn-sx" onClick={this.submit}>Join Party</button>
+					</div>
 			</div>
 		);
 	}
