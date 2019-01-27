@@ -19,7 +19,6 @@ class JoinParty extends Component{
   		let params = queryString.parse(url);
 		if(params['uuid'] !== undefined){
 			this.props.updateUuid (params['uuid']);
-			this.setState({redirect: true});
 		}
   		
 		

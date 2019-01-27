@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter,Switch } from 'react-router-dom';
 import JoinParty from './components/sign_in/join_party';
 import LogIn from './components/sign_in/log_in';
 import SignUp from './components/sign_in/sign_up';
 import CreateParty from './components/create_party/create_party';
 import TrackPage from './components/track_page/track_page';
 import Entrance from './components/entrance/entrance';
+
 
 class Content extends Component {
 	constructor(props){
@@ -29,22 +30,14 @@ class Content extends Component {
       <div className="App">
         <header className="App-header">
 			<BrowserRouter>
-				<Route path='/entrance' component={(props) => <Entrance {...props} updateUuid={ this.updateUuid  }/>} />
-			</BrowserRouter>
-			<BrowserRouter>
-				<Route path='/joinparty' component={(props) => <JoinParty {...props} updateUuid={ this.updateUuid  }/>} />
-			</BrowserRouter>
-			<BrowserRouter>
-				<Route path='/login' render={ () => <LogIn />} />
-			</BrowserRouter>
-			<BrowserRouter>
-				<Route path='/signUp' render={ () => <SignUp />} />
-			</BrowserRouter>
-			<BrowserRouter>
-				<Route path='/createParty' render={ () => <CreateParty uuid={this.state.uuid}/>} />
-			</BrowserRouter>
-			<BrowserRouter>
-				<Route path='/tracklist' render={ () => <TrackPage />} />
+				<Switch>
+					<Route path='/entrance' render={(props) => <Entrance {...props} updateUuid={ this.updateUuid  }/>} />
+					<Route path='/login' render={ () => <LogIn />} />
+					<Route path='/signUp' render={ () => <SignUp />} />
+					<Route path='/joinparty' render={(props) =><JoinParty {...props} updateUuid={ this.updateUuid}  />} />
+					<Route path='/createParty' render={ () => <CreateParty uuid={this.state.uuid}/>} />
+					<Route path='/tracklist' render={ () => <TrackPage />} />
+				</Switch>
 			</BrowserRouter>
         </header>
       </div>
