@@ -1,0 +1,83 @@
+.signup-container {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+@font-face {
+  font-family: Circular;
+  src: url(../../resources/fonts/CircularStd-Bold.otf);
+}
+
+.signup-container{
+  font-family: Circular;
+}
+
+.subheader-left{
+  float:left;
+  font-size: 10px;
+  margin-left: 50px;
+}
+
+.header-left{
+  float:left;
+  font-size: 30px;
+  margin-left: 50px;
+}
+
+.facebookBtn{
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  background-color: #415993;
+  border-style: none;
+  padding: 7px;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-bottom: 18px;
+}
+
+.or-center{
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0rem;
+  font-size: 12px;
+}
+
+.hr{
+  color:white;
+}
+
+.hr:before {
+  display: inline-block;
+  content:"";
+  height: 4px;
+  background: white;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  margin-top: -2px;
+  margin-left: 10px;
+}
+
+.signup-container .btn{
+  margin-top: 8px;
+  border-radius: 25px;
+}
+
+.loginBtn{
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin-top: 30px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+.form-group{
+  margin-bottom: 0rem;
+}
