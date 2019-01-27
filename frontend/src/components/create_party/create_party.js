@@ -29,6 +29,8 @@ class CreateParty extends Component{
 		axios.post( endpoint, body )
 			.then( response => {
 				console.log(response.data);
+				this.props.updateState('partyCode', response.data);
+				this.props.updateState('partyName', this.state.partyName)
 			})
 			.catch( err => {
 				console.log(err);

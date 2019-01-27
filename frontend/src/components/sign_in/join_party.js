@@ -20,7 +20,7 @@ class JoinParty extends Component{
 		let url = this.props.location.search;
   		let params = queryString.parse(url);
 		if(params['uuid'] !== undefined){
-			this.props.updateUuid (params['uuid']);
+			this.props.updateState('uuid', params['uuid']);
 		}
   		
 		

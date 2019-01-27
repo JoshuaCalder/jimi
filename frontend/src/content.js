@@ -14,15 +14,16 @@ class Content extends Component {
 		this.state={
 			uuid: null,
 			partyId: null,
-
+			partyName: null,
+			partyCode: null,
 		};	
 	}
 
 	
-	updateUuid = (id) => {
-		if(this.state.uuid === null){
+	updateState = (key, val) => {
+		if(this.state[key] === null){
 			this.setState({
-				uuid: id,
+				[key]: val,
 			});
 		}
 	}
@@ -30,23 +31,27 @@ class Content extends Component {
 	handleRedirect = (url) =>{
 		return (	<Redirect to={ url } />	);
 	}
+
   render() {
+	
     return (
       <div className="App">
         <header className="App-header">
 			<BrowserRouter>
 				<Switch>
-					<Route path='/entrance' component={(props) => <Entrance {...props} updateUuid={ this.updateUuid  }/>} />
+					<Route path='/entrance' component={(props) => <Entrance {...props} 
+							updateState={ this.updateState  }/>} />
 					<Route path='/login' render={ () => <LogIn />} />
 					<Route path='/signUp' render={ () => <SignUp />} />
 					<Route path='/joinparty' component={(props) => <JoinParty {...props} 
 							handleRedirect={ this.handleRedirect } 
-							updateUuid={ this.updateUuid }
+							updateState={ this.updateState }
 							updatePartyId={ this.updatePartyId }
 							uuid={this.state.uuid}
 							/>} 
 						/>
-					<Route path='/createparty' component={(props) => <CreateParty {...props} updateUuid={ this.updateUuid  }/>} />
+					<Route path='/createparty' component={(props) => <CreateParty {...props} 
+							updateState={ this.updateState  }/>} />
 					<Route path='/tracklist' render={ () => <TrackPage />} />
 				</Switch>
 			</BrowserRouter>
