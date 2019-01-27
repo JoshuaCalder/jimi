@@ -11,3 +11,6 @@
 /backend/jimi_project/__pycache__/settings.cpython-37.pyc
 /backend/jimi_project/settings.py
 .DS_Store
+
+.vscode
+backend
