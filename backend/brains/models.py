@@ -5,7 +5,7 @@ class Parties(models.Model):
 	party_admin = models.UUIDField(editable=False)
 	party_name = models.CharField(max_length=100)
 	party_code = models.IntegerField(unique=True)
-	# party_playlist_id = models.CharField(max_length=100)
+	party_playlist_id = models.CharField(max_length=100)
 
 class Users(models.Model):
     user_uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

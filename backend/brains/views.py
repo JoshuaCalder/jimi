@@ -5,7 +5,7 @@ import random, json
 
 from brains.auth import STATE_KEY,generate_state,get_redirect_url,get_access_tokens
 from brains.spotify_api import get_user_id
-from brains.manage_tracklist import create_playlist
+from brains.manage_tracklist import create_playlist,add_top_tracks,get_tracklist
 
 from brains.models import Parties
 from brains.models import Users
@@ -22,13 +22,13 @@ def create_party(request):
 	admin_uuid = body['user_uuid']
 	admin = Users.objects.get(user_uuid=admin_uuid)
 
-	create_playlist(admin)
+	playalist_id = create_playlist(admin)
 
-	
 	p = Parties.objects.create(
 		party_admin = admin_uuid,
 		party_name = body['party_name'],
 		party_code = party_code,
+		party_playlist_id = playalist_id
 	)
 	admin.user_party = p
 	admin.save()
@@ -46,7 +46,9 @@ def join_party(request):
 	user_party = Parties.objects.get(party_code = body['party_code'] )
 	user.user_party = user_party
 	user.save()
-	
+
+	add_top_tracks(user,user_party.party_playlist_id)
+
 	print(f"Party joined")
 	return HttpResponse('success')
 
@@ -55,11 +57,24 @@ def join_party(request):
 # returns list of all top songs associated with a party
 def party_top_tracks(request):
 	body = json.loads(request.body)
-	party_id = body['party_id']
-	return HttpResponse('party_id: ' + str(party_id))
+	party_code = body['party_code']
+
+	party_admin_uuid = Parties.objects.get(party_code=party_code).party_admin
+	admin = Users.objects.get(user_uuid=party_admin_uuid).user_access_token
+
+	party = Parties.objects.get(party_code=party_code)
+	admin = Users.objects.get(user_uuid=party.party_admin)
+
+	tracks = get_tracklist(admin,party.party_playlist_id)
+
+	return HttpResponse(tracks)
 
 
-
+def playlist_from_partycode(request):
+	body = json.loads(request.body)
+	party_code = body['party_code']
+	name = Parties.objects.get(party_code=party_code).party_name
+	return HttpResponse(name)
 #---------------------------
 # 	Auth Stuff ~ goh
 
