@@ -6,8 +6,8 @@ import random, json
 from brains.models import Parties
 from brains.models import Users
 
-# @param party_admin
-# @param party_name
+# @post party_admin
+# @post party_name
 # assigns random 6 digit code to party
 # TODO: add code check, ensuring no duplicates in party codes
 # return 6 digit numeric code
@@ -20,8 +20,8 @@ def create_party(request):
 	)
 	return HttpResponse(party_code)
 
-# @param party_code
-# @param user_id
+# @post user_id - Spotify user id
+# @post party_code - 6 digit numeric party code
 # registers a user to a party
 def join_party(request):
 	body = json.loads(request.body)
