@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import  TextInput  from '../inputs/text_input';
 import axios from 'axios';
+import './create_party.css';
+import '../sign_in/join_party.css';
 
 class CreateParty extends Component{
 	constructor(props){
@@ -16,7 +18,7 @@ class CreateParty extends Component{
 		this.setState({
 			[e.target.id]: e.target.value,
 		});
-		console.log(e.target.value);	
+		console.log(e.target.value);
 	}
 
 	submit = () => {
@@ -38,12 +40,12 @@ class CreateParty extends Component{
 			});
 
 	}
-	
+
 	handleEnter = (event) => {
 	    var code = event.keyCode || event.which;
 	    if(code === 13) { //13 is the enter keycode
    			this.submit();
-		} 
+		}
 	}
 
 	render(){
@@ -51,17 +53,19 @@ class CreateParty extends Component{
 			return( this.props.handleRedirect('/tracklist') );
 
 		return(
-			<div>
-				<TextInput 
-					label={"Party Name"}
-					name={'partyName'}
-					id={'partyName'}
-					placeHolder={'Enter Party Name'}
-					type={'text'}
-					handleTextChange={this.handleTextChange}
-					onKeyPress={ this.handleEnter }
-					/>
-				<button type="button" className="btn btn-success" onClick={this.submit}>Create Party</button>
+			<div className="join-party-container">
+				<div className="inner-wrap">
+					<h1 className="extend-h1">Name <br/> your Party.</h1>
+					<TextInput
+						name={'partyName'}
+						id={'partyName'}
+						placeHolder={"ex: Jimi's Party"}
+						type={'text'}
+						handleTextChange={this.handleTextChange}
+						onKeyPress={ this.handleEnter }
+						/>
+					<button type="button" className="btn btn-success" onClick={this.submit}>CREATE</button>
+				</div>
 			</div>
 		);
 	}
