@@ -6,7 +6,7 @@ const Track = (props) => {
 			<hr />
 			<div className="row track">
 				<div className="col">
-					<img className="img-cirlce" alt="null" src={ props.albumCover } />
+					<img className="img-cirlce" alt="null" src={ props.imgUrl} />
 				</div>
 				<div className="col-6">
 					<h5>{ props.track.name }</h5>

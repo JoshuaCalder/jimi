@@ -14,10 +14,12 @@ class TrackList extends Component{
 		let trackList = [];
 		console.log(this.props.songList);
 		for( let i in this.props.songList){
+			let song = this.props.songList[i];
+			console.log(song);
 			trackList.push(
 					<Track 
 						track={this.props.songList[i].track}
-						albumCover={ "https://img1-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/21976/large_thumb_stage.jpg" }
+						imgUrl={ song.track.album.images[0].url }
 						key={i}
 					/>
 				);
