@@ -16,9 +16,11 @@ class CurrentTrack extends Component{
 			<React.Fragment>
 				<div className='container'>
 					<img className='album-img' alt='null' src={ this.props.albumCover } />
-					<h5>{ this.props.title }</h5>
-					<h6>{ this.props.artist }</h6>
-					<h6>{ this.props.album }</h6>
+						<div className='center-track'>
+							<h5>{ this.props.title }</h5>
+							<h6> { this.props.artist }</h6>
+							<h6>{ this.props.album }</h6>
+						</div>
 				</div>
 			</React.Fragment>
 		);
