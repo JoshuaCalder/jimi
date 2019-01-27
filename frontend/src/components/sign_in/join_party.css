@@ -1,6 +1,7 @@
 
 /* sign up container */
 .join-party-container{
+  font-family: Circular;
   width: 100%;
   text-align: center;
   background-color: #ff6699;
@@ -15,6 +16,18 @@
 .join-party-container .inner-wrap{
   width: 80%;
   margin: 40px auto;
+  margin-top: 200px;
+}
+
+h1{
+  font-family: Circular;
+  line-height: 40px;
+  letter-spacing: 0.4px;
+}
+
+.inner-wrap p{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .join-party-container button{
@@ -23,6 +36,8 @@
   font-weight: 900;
   font-family: Circular;
   margin: 24px 0 0 0;
+  background-color: #57b660;
+  border-style: none;
 }
 
 .join-party-container button.btn.btn-success.btn-sx {
@@ -30,7 +45,9 @@
   font-weight: 900;
   font-size: calc(2px + 2vmin);
   letter-spacing: 0.6px;
-  /*color: purple;*/
+  background-color: #57b660;
+  margin-bottom: 10px;
+  border-style: none;
 }
 
 .join-party-container button.sml {
@@ -57,4 +74,3 @@
   font-weight: 700;
   font-size: calc(6px + 2vmin);
 }
-

@@ -21,8 +21,8 @@ class JoinParty extends Component{
 		if(params['uuid'] !== undefined){
 			this.props.updateUuid (params['uuid']);
 		}
-  		
-		
+
+
 	}
 	handleTextChange = (e, id) => {
 		this.setState({
@@ -30,12 +30,12 @@ class JoinParty extends Component{
 		});
 		console.log(e.target.value);
 	}
-	
+
 	redirectToCreateParty = () => {
 		console.log('redirecting');
 		this.setState({
 			redirect: true,
-		});	
+		});
 	}
 
 	submit = () => {
@@ -55,7 +55,7 @@ class JoinParty extends Component{
 					<TextInput
 						name={'partyId'}
 						id={'partyId'}
-						placeHolder={'000-000'}
+						placeHolder={'#000000'}
 						type={'text'}
 						class={'center-place-holder'}
 						handleTextChange={this.handleTextChange}
@@ -63,8 +63,8 @@ class JoinParty extends Component{
 					<button type="button" className="btn btn-success btn-sx" onClick={this.submit}>JOIN PARTY</button>
 					<hr/>
 					<p>Don't have a unique code?</p>
-					<button type="button" className="btn btn-success btn-sx sml" onClick={ this.redirectToCreateParty }>CREATE A SESSION</button>
-				</div>	
+					<button type="button" className="btn btn-success btn-sx sml" onClick={ this.redirectToCreateParty }>CREATE A ROOM</button>
+				</div>
 			</div>
 		);
 	}
