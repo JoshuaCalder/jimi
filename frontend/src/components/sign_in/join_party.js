@@ -22,8 +22,8 @@ class JoinParty extends Component{
 		if(params['uuid'] !== undefined){
 			this.props.updateState('uuid', params['uuid']);
 		}
-  		
-		
+
+
 	}
 	joinParty = () => {
 		let endpoint = '/join_party';
@@ -49,12 +49,12 @@ class JoinParty extends Component{
 		});
 		console.log(e.target.value);
 	}
-	
+
 	redirectToCreateParty = () => {
 		console.log('redirecting');
 		this.setState({
 			redirect: true,
-		});	
+		});
 	}
 
 	submit = () => {
@@ -82,8 +82,8 @@ class JoinParty extends Component{
 					<button type="button" className="btn btn-success btn-sx" onClick={this.joinParty}>JOIN PARTY</button>
 					<hr/>
 					<p>Don't have a unique code?</p>
-					<button type="button" className="btn btn-success btn-sx sml" onClick={ this.redirectToCreateParty }>CREATE A SESSION</button>
-				</div>	
+					<button type="button" className="btn btn-success btn-sx sml" onClick={ this.redirectToCreateParty }>CREATE A ROOM</button>
+				</div>
 			</div>
 		);
 	}
