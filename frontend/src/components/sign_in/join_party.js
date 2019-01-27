@@ -25,6 +25,8 @@ class JoinParty extends Component{
 	render(){
 		return(
 			<div>
+				<h1>Join The Party.</h1>
+				<h3>Sign in with <a href="https://spotify.com">Spotify</a> to play your songs.</h3>
 				<TextInput 
 					label={"Party Identifier"}
 					name={'partyId'}
