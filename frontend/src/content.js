@@ -13,6 +13,8 @@ class Content extends Component {
 		super(props);
 		this.state={
 			uuid: null,
+			partyId: null,
+
 		};	
 	}
 
@@ -36,7 +38,13 @@ class Content extends Component {
 				<Route path='/entrance' component={(props) => <Entrance {...props} updateUuid={ this.updateUuid  }/>} />
 			</BrowserRouter>
 			<BrowserRouter>
-				<Route path='/joinparty' component={(props) => <JoinParty {...props} handleRedirect={ this.handleRedirect } updateUuid={ this.updateUuid  }/>} />
+				<Route path='/joinparty' component={(props) => <JoinParty {...props} 
+						handleRedirect={ this.handleRedirect } 
+						updateUuid={ this.updateUuid }
+						updatePartyId={ this.updatePartyId }
+						uuid={this.state.uuid}
+						/>} 
+					/>
 			</BrowserRouter>
 			<BrowserRouter>
 				<Route path='/login' render={ () => <LogIn />} />
@@ -45,7 +53,7 @@ class Content extends Component {
 				<Route path='/signUp' render={ () => <SignUp />} />
 			</BrowserRouter>
 			<BrowserRouter>
-				<Route path='/createparty' render={ () => <CreateParty uuid={this.state.uuid}/>} />
+				<Route path='/createparty' component={(props) => <CreateParty {...props} updateUuid={ this.updateUuid  }/>} />
 			</BrowserRouter>
 			<BrowserRouter>
 				<Route path='/tracklist' render={ () => <TrackPage />} />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import  TextInput  from '../inputs/text_input';
 import queryString from 'query-string';
+import axios from 'axios';
 import { Redirect, BrowserRouter } from 'react-router-dom';
 import CreateParty from '../create_party/create_party';
 import './join_party.css';
@@ -10,7 +11,7 @@ class JoinParty extends Component{
 			super(props);
 			this.state = {
 					userName: null,
-					userId: null,
+					userId: props.uuid,
 					partyId: null,
 					redirect: false,
 		};
@@ -24,6 +25,24 @@ class JoinParty extends Component{
   		
 		
 	}
+	joinParty = () => {
+		let endpoint = '/join_party';
+		let body = {
+			user_uuid: this.state.userId,
+			party_code: this.state.partyCode
+		}
+		console.log(body);
+		axios.post( endpoint, body )
+			.then( response => {
+				console.log(response.data);
+			})
+			.catch( err => {
+				console.log(err);
+			});
+	
+	}
+
+		
 	handleTextChange = (e, id) => {
 		this.setState({
 			[e.target.id]: e.target.value,
@@ -53,14 +72,14 @@ class JoinParty extends Component{
 				<div className="inner-wrap">
 					<h1>Enter the <br/>party code.</h1>
 					<TextInput
-						name={'partyId'}
-						id={'partyId'}
+						name={'partyCode'}
+						id={'partyCode'}
 						placeHolder={'000-000'}
 						type={'text'}
 						class={'center-place-holder'}
 						handleTextChange={this.handleTextChange}
 					/>
-					<button type="button" className="btn btn-success btn-sx" onClick={this.submit}>JOIN PARTY</button>
+					<button type="button" className="btn btn-success btn-sx" onClick={this.joinParty}>JOIN PARTY</button>
 					<hr/>
 					<p>Don't have a unique code?</p>
 					<button type="button" className="btn btn-success btn-sx sml" onClick={ this.redirectToCreateParty }>CREATE A SESSION</button>

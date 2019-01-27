@@ -6,7 +6,7 @@ class CreateParty extends Component{
 	constructor(props){
 			super(props);
 			this.state = {
-					userId: '12345',
+					userId: 'e8662251-b386-40d6-901f-dc7e30f8ef43',
 					partyId: null,
 		};
 	}
@@ -21,9 +21,10 @@ class CreateParty extends Component{
 	submit = () => {
 		let endpoint = '/create_party';
 		let body={
-			party_admin: 'someadmin', 
+			user_uuid: this.state.userId, 
 			party_name: this.state.partyName 
 		};
+		console.log(body);
 
 		axios.post( endpoint, body )
 			.then( response => {
