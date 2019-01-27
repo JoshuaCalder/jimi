@@ -20,10 +20,11 @@ def create_party(request):
 	party_code = random.randint(100000, 999999)
 
 	admin_uuid = body['user_uuid']
-
-	create_playlist(admin_uuid)
-
 	admin = Users.objects.get(user_uuid=admin_uuid)
+
+	create_playlist(admin)
+
+	
 	p = Parties.objects.create(
 		party_admin = admin_uuid,
 		party_name = body['party_name'],
