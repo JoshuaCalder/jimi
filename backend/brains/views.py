@@ -5,7 +5,7 @@ import random
 
 from brains.models import Parties
 
-# @param user_id
+# @param party_adminc
 # @param party_name
 # assigns random 6 digit code to party
 # TODO: add code check, ensuring no duplicates in party codes
