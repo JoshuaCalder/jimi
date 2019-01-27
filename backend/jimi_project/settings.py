@@ -9,7 +9,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SECRET = ['nwhacks2019']
+SECRET_KEY = ['nwhacks2019']
 # Application definition
 
 INSTALLED_APPS = [
