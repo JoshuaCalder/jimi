@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import  TextInput  from '../inputs/text_input';
 import queryString from 'query-string';
 import { Redirect, BrowserRouter } from 'react-router-dom';
+import CreateParty from '../create_party/create_party';
 import './join_party.css';
 
 class JoinParty extends Component{
@@ -19,7 +20,6 @@ class JoinParty extends Component{
   		let params = queryString.parse(url);
 		if(params['uuid'] !== undefined){
 			this.props.updateUuid (params['uuid']);
-			this.setState({redirect: true});
 		}
   		
 		
@@ -32,6 +32,7 @@ class JoinParty extends Component{
 	}
 	
 	redirectToCreateParty = () => {
+		console.log('redirecting');
 		this.setState({
 			redirect: true,
 		});	
@@ -44,7 +45,7 @@ class JoinParty extends Component{
 	render(){
 		if(this.state.redirect){
 			return(
-				<Redirect to='/createparty' />
+				this.props.handleRedirect('/createParty')
 			);
 		}
 		return(
@@ -62,7 +63,7 @@ class JoinParty extends Component{
 					<button type="button" className="btn btn-success btn-sx" onClick={this.submit}>JOIN PARTY</button>
 					<hr/>
 					<p>Don't have a unique code?</p>
-					<button type="button" className="btn btn-success btn-sx sml"onClick={this.redirectToCreateParty}>CREATE A SESSION</button>
+					<button type="button" className="btn btn-success btn-sx sml" onClick={ this.redirectToCreateParty }>CREATE A SESSION</button>
 				</div>	
 			</div>
 		);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter, Redirect } from 'react-router-dom';
 import JoinParty from './components/sign_in/join_party';
 import LogIn from './components/sign_in/log_in';
 import SignUp from './components/sign_in/sign_up';
@@ -24,6 +24,10 @@ class Content extends Component {
 			});
 		}
 	}
+
+	handleRedirect = (url) =>{
+		return (	<Redirect to={ url } />	);
+	}
   render() {
     return (
       <div className="App">
@@ -32,7 +36,7 @@ class Content extends Component {
 				<Route path='/entrance' component={(props) => <Entrance {...props} updateUuid={ this.updateUuid  }/>} />
 			</BrowserRouter>
 			<BrowserRouter>
-				<Route path='/joinparty' component={(props) => <JoinParty {...props} updateUuid={ this.updateUuid  }/>} />
+				<Route path='/joinparty' component={(props) => <JoinParty {...props} handleRedirect={ this.handleRedirect } updateUuid={ this.updateUuid  }/>} />
 			</BrowserRouter>
 			<BrowserRouter>
 				<Route path='/login' render={ () => <LogIn />} />
@@ -41,7 +45,7 @@ class Content extends Component {
 				<Route path='/signUp' render={ () => <SignUp />} />
 			</BrowserRouter>
 			<BrowserRouter>
-				<Route path='/createParty' render={ () => <CreateParty uuid={this.state.uuid}/>} />
+				<Route path='/createparty' render={ () => <CreateParty uuid={this.state.uuid}/>} />
 			</BrowserRouter>
 			<BrowserRouter>
 				<Route path='/tracklist' render={ () => <TrackPage />} />
