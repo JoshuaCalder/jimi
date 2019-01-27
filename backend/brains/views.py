@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 import random
 
-from brains.auth import STATE_KEY,generate_state,get_redirect_url,hello_spotify_api
+from brains.auth import STATE_KEY,generate_state,get_redirect_url,get_access_tokens
 
 from brains.models import Parties
 
@@ -64,5 +64,5 @@ def callback(request):
 
 	# auth_options = get_auth_options(code)
 	# print(f'auth_options: {auth_options}')
-	hello_spotify_api(code)
+	token_dict = get_access_tokens(code)
 	return res

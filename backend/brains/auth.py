@@ -31,24 +31,23 @@ def get_redirect_url(state):
 
 def get_auth_options(code):
     auth_headers = f"{CLIENT_ID}:{CLIENT_SECRET}"
+    auth_code = base64.b64encode(auth_headers.encode()).decode('utf-8')
     auth_options = {
-		# 'url': 'https://accounts.spotify.com/api/token',
-		'form': {
+		'data': {
 			'code': code,
 			'redirect_uri': REDIRECT_URI,
 			'grant_type': 'authorization_code'
 		},
 		'headers': {
-			'Authorization': 'Basic ' + str(base64.b64encode(auth_headers.encode()))
+			'Authorization': 'Basic ' + str(auth_code)
 		},
 	}
     return auth_options
 
-def hello_spotify_api(code):
+def get_access_tokens(code):
     auth_options = get_auth_options(code)
-    print(auth_options)
-    response = requests.post('https://accounts.spotify.com/api/token',headers=auth_options['headers'],data=json.dumps(auth_options['form']))
+    response = requests.post('https://accounts.spotify.com/api/token',headers=auth_options['headers'],data=auth_options['data'])
     print("here")
-    print(response)
+    response = json.loads(response.text)
 
-    return
+    return response
