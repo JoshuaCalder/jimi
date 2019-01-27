@@ -27,14 +27,15 @@ def join_party(request):
 	body = json.loads(request.body)
 	user_id = body['user_id']
 	party_code = body['party_code']
-	user_party = Parties.objects.values('id').filter(party_code = party_code)
+	user_party = Parties.objects.get(party_code = party_code)
 	# todo: check if party exists before adding
 	Users.objects.create(
 		user_id = user_id,
-		user_party = user_party[0],
+		user_party = user_party,
 	)
-	return HttpResponse('hi')
+	return HttpResponse('user ' + str(user_id) + 'added to party')
 
+# not yet implemented
 # @param party_id
 # returns list of all top songs associated with a party
 def party_top_tracks(request):
