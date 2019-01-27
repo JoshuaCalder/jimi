@@ -1,0 +1,15 @@
+.entrance-body{
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.entrance-body button{
+  width: 50%;
+  margin: 25px;
+}
