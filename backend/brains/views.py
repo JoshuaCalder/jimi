@@ -13,10 +13,15 @@ from brains.models import Users
 # return 6 digit numeric code
 def create_party(request):
 	body = json.loads(request.body)
-	Parties.objects.create(
+	party_code = random.randint(100000, 999999)
+	p = Parties.objects.create(
 		party_admin = body['party_admin'],
 		party_name = body['party_name'],
-		party_code = random.randint(100000, 999999),
+		party_code = party_code,
+	)
+	Users.objects.create(
+		user_id = body['party_admin'],
+		user_party = p
 	)
 	return HttpResponse(party_code)
 
@@ -28,7 +33,6 @@ def join_party(request):
 	user_id = body['user_id']
 	party_code = body['party_code']
 	user_party = Parties.objects.get(party_code = party_code)
-	# todo: check if party exists before adding
 	Users.objects.create(
 		user_id = user_id,
 		user_party = user_party,
