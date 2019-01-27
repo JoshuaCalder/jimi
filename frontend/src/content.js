@@ -51,7 +51,8 @@ class Content extends Component {
 							/>} 
 						/>
 					<Route path='/createparty' component={(props) => <CreateParty {...props} 
-							updateState={ this.updateState  }/>} />
+							updateState={ this.updateState  }
+							uuid={ this.state.uuid }/>} />
 					<Route path='/tracklist' render={ () => <TrackPage />} />
 				</Switch>
 			</BrowserRouter>

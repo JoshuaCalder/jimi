@@ -58,7 +58,7 @@ class JoinParty extends Component{
 	}
 
 	submit = () => {
-		console.log(this.state);
+		this.props.updateState('uuid', this.state.userId);
 	}
 
 	render(){
