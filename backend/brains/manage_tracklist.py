@@ -22,3 +22,6 @@ def add_top_tracks(user,playlist_id):
     new_pl = spo.get_tracklist(user,playlist_id)
     print(len(new_pl))
     return
+
+def get_tracklist(admin,playlist_id):
+    return spo.get_tracklist(admin,playlist_id)
