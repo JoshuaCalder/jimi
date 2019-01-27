@@ -9,7 +9,7 @@ import json
 
 STATE_KEY='spotify_auth_state'
 
-SCOPE='user-read-private'
+SCOPE='user-read-private user-top-read playlist-modify-public playlist-read-private'
 
 payload = {'username':'administrator', 'password':'xyz'}
 result = urlencode(payload, quote_via=quote_plus)
