@@ -69,6 +69,12 @@ def party_top_tracks(request):
 
 	return HttpResponse(tracks)
 
+
+def playlist_from_partycode(request):
+	body = json.loads(request.body)
+	party_code = body['party_code']
+	name = Parties.objects.get(party_code=party_code).party_name
+	return HttpResponse(name)
 #---------------------------
 # 	Auth Stuff ~ goh
 
