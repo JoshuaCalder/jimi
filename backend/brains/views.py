@@ -5,6 +5,7 @@ import random, json
 
 from brains.auth import STATE_KEY,generate_state,get_redirect_url,get_access_tokens
 from brains.spotify_api import get_user_id
+from brains.manage_tracklist import create_playlist
 
 from brains.models import Parties
 from brains.models import Users
@@ -20,16 +21,18 @@ def create_party(request):
 
 	admin_uuid = body['user_uuid']
 
-	admin = Users.objects.get(user_uuid=admin_uuid)
+	create_playlist(admin_uuid)
 
+	admin = Users.objects.get(user_uuid=admin_uuid)
 	p = Parties.objects.create(
 		party_admin = admin_uuid,
 		party_name = body['party_name'],
 		party_code = party_code,
 	)
 	admin.user_party = p
-	
+	admin.save()
 	print(f"Party Created with code {party_code}")
+
 	return HttpResponse(party_code)
 
 # @post user_id - Spotify user id
