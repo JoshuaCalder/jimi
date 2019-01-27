@@ -1,6 +1,6 @@
 @font-face {
   font-family: Circular;
-  src: url(fonts/CircularStd-Bold.otf);
+  src: url(../../resources/fonts/CircularStd-Bold.otf);
 }
 
 .form-group{
