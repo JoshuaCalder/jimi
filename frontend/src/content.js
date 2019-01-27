@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, BrowserRouter, Redirect } from 'react-router-dom';
+import { Route, BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import JoinParty from './components/sign_in/join_party';
 import LogIn from './components/sign_in/log_in';
 import SignUp from './components/sign_in/sign_up';
@@ -35,28 +35,20 @@ class Content extends Component {
       <div className="App">
         <header className="App-header">
 			<BrowserRouter>
-				<Route path='/entrance' component={(props) => <Entrance {...props} updateUuid={ this.updateUuid  }/>} />
-			</BrowserRouter>
-			<BrowserRouter>
-				<Route path='/joinparty' component={(props) => <JoinParty {...props} 
-						handleRedirect={ this.handleRedirect } 
-						updateUuid={ this.updateUuid }
-						updatePartyId={ this.updatePartyId }
-						uuid={this.state.uuid}
-						/>} 
-					/>
-			</BrowserRouter>
-			<BrowserRouter>
-				<Route path='/login' render={ () => <LogIn />} />
-			</BrowserRouter>
-			<BrowserRouter>
-				<Route path='/signUp' render={ () => <SignUp />} />
-			</BrowserRouter>
-			<BrowserRouter>
-				<Route path='/createparty' component={(props) => <CreateParty {...props} updateUuid={ this.updateUuid  }/>} />
-			</BrowserRouter>
-			<BrowserRouter>
-				<Route path='/tracklist' render={ () => <TrackPage />} />
+				<Switch>
+					<Route path='/entrance' component={(props) => <Entrance {...props} updateUuid={ this.updateUuid  }/>} />
+					<Route path='/login' render={ () => <LogIn />} />
+					<Route path='/signUp' render={ () => <SignUp />} />
+					<Route path='/joinparty' component={(props) => <JoinParty {...props} 
+							handleRedirect={ this.handleRedirect } 
+							updateUuid={ this.updateUuid }
+							updatePartyId={ this.updatePartyId }
+							uuid={this.state.uuid}
+							/>} 
+						/>
+					<Route path='/createparty' component={(props) => <CreateParty {...props} updateUuid={ this.updateUuid  }/>} />
+					<Route path='/tracklist' render={ () => <TrackPage />} />
+				</Switch>
 			</BrowserRouter>
         </header>
       </div>
