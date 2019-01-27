@@ -29,4 +29,4 @@ const response = {
   ]
 };
 
-export response;
+export { response };
