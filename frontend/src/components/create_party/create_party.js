@@ -6,7 +6,7 @@ class CreateParty extends Component{
 	constructor(props){
 			super(props);
 			this.state = {
-					userId: 'e8662251-b386-40d6-901f-dc7e30f8ef43',
+					userId: props.uuid,
 					partyId: null,
 		};
 	}
@@ -21,7 +21,7 @@ class CreateParty extends Component{
 	submit = () => {
 		let endpoint = '/create_party';
 		let body={
-			user_uuid: this.state.userId, 
+			user_uuid: this.props.uuid, 
 			party_name: this.state.partyName 
 		};
 		console.log(body);
