@@ -49,21 +49,21 @@ class JoinParty extends Component{
 		}
 		return(
 			<div className="join-party-container">
-				<TextInput
-					label={"Join Party by Entering Party Entrance Code."}
-					name={'partyId'}
-					id={'partId'}
-					placeHolder={'000-000'}
-					type={'text'}
-					class={'center-place-holder'}
-					handleTextChange={this.handleTextChange}
+				<div className="inner-wrap">
+					<h1>Enter the <br/>party code.</h1>
+					<TextInput
+						name={'partyId'}
+						id={'partyId'}
+						placeHolder={'000-000'}
+						type={'text'}
+						class={'center-place-holder'}
+						handleTextChange={this.handleTextChange}
 					/>
-					<div className="fluid">
-						<button type="button" className="btn btn-success btn-sx" onClick={this.submit}>Join Party</button>
-						<p> or </p>
-						<button type="button" className="btn btn-success btn-sx" onClick={this.redirectToCreateParty}>Create New Party</button>
-					</div>
-					
+					<button type="button" className="btn btn-success btn-sx" onClick={this.submit}>JOIN PARTY</button>
+					<hr/>
+					<p>Don't have a unique code?</p>
+					<button type="button" className="btn btn-success btn-sx sml"onClick={this.redirectToCreateParty}>CREATE A SESSION</button>
+				</div>	
 			</div>
 		);
 	}

@@ -1,17 +1,60 @@
 
 /* sign up container */
 .join-party-container{
+  width: 100%;
   text-align: center;
-  background-color: #282c34;
+  background-color: #ff6699;
+  background: linear-gradient(to bottom left, #ff6699, #fee140);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.join-party-container button{
-  width: 50%;
-  margin: 25px;
+.join-party-container .inner-wrap{
+  width: 80%;
+  margin: 40px auto;
 }
+
+.join-party-container button{
+  width: 100%;
+  border-radius: 100px;
+  font-weight: 900;
+  font-family: Circular;
+  margin: 24px 0 0 0;
+}
+
+.join-party-container button.btn.btn-success.btn-sx {
+  font-family: Circular;
+  font-weight: 900;
+  font-size: calc(2px + 2vmin);
+  letter-spacing: 0.6px;
+  /*color: purple;*/
+}
+
+.join-party-container button.sml {
+  width: 60%;
+  margin: 0;
+}
+
+.join-party-container input#partyId {
+  border-radius: 10px;
+}
+
+.join-party-container #partyId {
+  width: 100%;
+}
+
+.join-party-container h1 {
+  color: black;
+  font-weight: 700;
+  text-align: left;
+}
+
+.join-party-container {
+  color: black;
+  font-weight: 700;
+  font-size: calc(6px + 2vmin);
+}
+
