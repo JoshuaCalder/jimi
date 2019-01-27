@@ -35,6 +35,7 @@ class SignUp extends Component{
 
 				<p className="or-center"> OR </p>
 
+				<div className="form-group">
 				<TextInput
 					name={'spotifyUsername'}
 					id={'spotifyUsername'}
@@ -56,7 +57,7 @@ class SignUp extends Component{
 						type={'password'}
 						handleTextChange={this.handleTextChange}
 						/>
-
+					</div>
 					<button type="button" className="btn btn-success loginBtn" onClick={this.submit}>LOGIN</button>
 					</div>
 			</React.Fragment>

@@ -44,10 +44,10 @@ class JoinParty extends Component{
 			.catch( err => {
 				console.log(err);
 			});
-	
+
 	}
 
-		
+
 	handleTextChange = (e, id) => {
 		this.setState({
 			[e.target.id]: e.target.value,
@@ -86,14 +86,14 @@ class JoinParty extends Component{
 					<TextInput
 						name={'partyCode'}
 						id={'partyCode'}
-						placeHolder={'000-000'}
+						placeHolder={'#000-000'}
 						type={'text'}
 						class={'center-place-holder'}
 						handleTextChange={this.handleTextChange}
 					/>
 					<button type="button" className="btn btn-success btn-sx" onClick={this.joinParty}>JOIN PARTY</button>
 					<hr/>
-					<p>Don't have a unique code?</p>
+					<p>Don't have a party code?</p>
 					<button type="button" className="btn btn-success btn-sx sml" onClick={ this.redirectToCreateParty }>CREATE A ROOM</button>
 				</div>
 			</div>
