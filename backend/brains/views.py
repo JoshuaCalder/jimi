@@ -28,23 +28,23 @@ def create_party(request):
 		party_code = party_code,
 	)
 	admin.user_party = p
+	admin.save()
 	
 	print(f"Party Created with code {party_code}")
 	return HttpResponse(party_code)
 
-# @post user_id - Spotify user id
+# @post user_uuid - Spotify user id
 # @post party_code - 6 digit numeric party code
 # registers a user to a party
 def join_party(request):
 	body = json.loads(request.body)
-	user_id = body['user_id']
-	party_code = body['party_code']
-	user_party = Parties.objects.get(party_code = party_code)
-	Users.objects.create(
-		user_id = user_id,
-		user_party = user_party,
-	)
-	return HttpResponse('user ' + str(user_id) + 'added to party')
+	user = Users.objects.get(user_uuid = body['user_uuid'])
+	user_party = Parties.objects.get(party_code = body['party_code'] )
+	user.user_party = user_party
+	user.save()
+	
+	print(f"Party joined")
+	return HttpResponse('user ' + str(body['user_uuid']) + 'added to party')
 
 # not yet implemented
 # @param party_id
