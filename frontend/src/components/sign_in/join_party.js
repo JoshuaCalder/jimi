@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import  TextInput  from '../inputs/text_input';
+import axios from 'axios';
 
 class JoinParty extends Component{
 	constructor(props){
@@ -20,7 +21,24 @@ class JoinParty extends Component{
 
 	submit = () => {
 		console.log(this.state);
+		let endpoint = '/join_party';
+		let body={
+			user_id: 'usersid', 
+			party_code: this.state.partyId 
+		};
+
+		console.log(body);
+
+		axios.post( endpoint, body )
+			.then( response => {
+				console.log(response.data);
+			})
+			.catch( err => {
+				console.log(err);
+			});
+
 	}
+
 
 	render(){
 		return(
@@ -28,7 +46,7 @@ class JoinParty extends Component{
 				<TextInput 
 					label={"Party Identifier"}
 					name={'partyId'}
-					id={'partId'}
+					id={'partyId'}
 					placeHolder={'000-000'}
 					type={'text'}
 					handleTextChange={this.handleTextChange}
