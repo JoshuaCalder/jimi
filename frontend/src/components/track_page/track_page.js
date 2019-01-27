@@ -19,8 +19,8 @@ class TrackPage extends Component{
 			<div className="track-page">
 				<div className="top-info">
 					<p className="first">You are in:</p>
-					<p className="second">Dragon's Room</p>
-					<p className="third">#123456</p>
+					<p className="second">{ this.props.partyName }</p>
+					<p className="third">#{ this.props.partyCode }</p>
 				</div>
 				<div>
 					<header className="currently-playing"> Currently Playing </header>

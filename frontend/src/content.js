@@ -52,8 +52,13 @@ class Content extends Component {
 						/>
 					<Route path='/createparty' component={(props) => <CreateParty {...props} 
 							updateState={ this.updateState  }
+							handleRedirect={ this.handleRedirect }
+							partyCode={ this.state.partyCode }
 							uuid={ this.state.uuid }/>} />
-					<Route path='/tracklist' render={ () => <TrackPage />} />
+					<Route path='/tracklist' render={ () => <TrackPage 
+							partyName={ this.state.partyName }
+							partyCode={ this.state.partyCode }
+							/>} />
 				</Switch>
 			</BrowserRouter>
         </header>

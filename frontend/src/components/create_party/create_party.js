@@ -8,6 +8,7 @@ class CreateParty extends Component{
 			this.state = {
 					userId: props.uuid,
 					partyId: null,
+					redirect: false,
 		};
 	}
 
@@ -46,6 +47,9 @@ class CreateParty extends Component{
 	}
 
 	render(){
+		if(this.props.partyCode !== null)
+			return( this.props.handleRedirect('/tracklist') );
+
 		return(
 			<div>
 				<TextInput 
