@@ -11,10 +11,14 @@ class TrackPage extends Component{
 					userId: null,
 					partyId: null,
 		};
-		console.log(response)
 	}
 
 	render(){
+	
+		//let currentTrack = this.props.trackList[0];
+		if( this.props.songList  === undefined )
+				this.props.getTracks(this.props.partyCode);
+
 		return(
 			<div className="track-page">
 				<div className="top-info">
@@ -33,7 +37,7 @@ class TrackPage extends Component{
 					/>
 				<hr/>
 				<TrackList
-					songList={ response.items }
+					songList={ this.props.trackList }
 					/>
 			</div>
 		);

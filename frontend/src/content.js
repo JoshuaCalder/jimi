@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, BrowserRouter, Redirect, Switch } from 'react-router-dom';
+import axios from 'axios';
 import JoinParty from './components/sign_in/join_party';
 import LogIn from './components/sign_in/log_in';
 import SignUp from './components/sign_in/sign_up';
@@ -16,6 +17,7 @@ class Content extends Component {
 			partyId: null,
 			partyName: null,
 			partyCode: null,
+			trackList: null,
 		};	
 	}
 
@@ -30,6 +32,25 @@ class Content extends Component {
 
 	handleRedirect = (url) =>{
 		return (	<Redirect to={ url } />	);
+	}
+	
+	getTrackList = ( partyCode ) =>{
+		let endpoint = '/party_top_tracks';
+		let body = {
+			party_code: this.state.partyCode,
+		}
+		//let sendBody = JSON.stringify(body);
+		//console.log(sendBody);
+		axios.post( endpoint, body )
+			.then( response => {
+				let temp = JSON.parse(response);	
+				console.log(temp);
+
+			})
+			.catch( err => {
+				console.log(err);
+			});
+
 	}
 
   render() {
@@ -58,6 +79,8 @@ class Content extends Component {
 					<Route path='/tracklist' render={ () => <TrackPage 
 							partyName={ this.state.partyName }
 							partyCode={ this.state.partyCode }
+							trackList={ this.state.trackList}
+							getTracks={ this.getTrackList }
 							/>} />
 				</Switch>
 			</BrowserRouter>

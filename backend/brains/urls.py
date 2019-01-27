@@ -8,8 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 urlpatterns = [
 	path('create_party', csrf_exempt(views.create_party), name='create_party'),
 	path('join_party', csrf_exempt(views.join_party), name='join_party'),
-	path('party_top_tracks', views.party_top_tracks, name='party_top_tracks'),
-	path('playlist_from_partycode', views.playlist_from_partycode, name='playlist_from_partycode'),
+	path('party_top_tracks', csrf_exempt(views.party_top_tracks), name='party_top_tracks'),
+	path('playlist_from_partycode', csrf_exempt(views.playlist_from_partycode), name='playlist_from_partycode'),
 	path('hello', views.hello,name='hello'),
 
 	path('login', views.login,name="login"),

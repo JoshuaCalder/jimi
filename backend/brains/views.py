@@ -67,7 +67,7 @@ def party_top_tracks(request):
 
 	tracks = get_tracklist(admin,party.party_playlist_id)
 
-	return HttpResponse(tracks)
+	return HttpResponse([tracks])
 
 
 def playlist_from_partycode(request):

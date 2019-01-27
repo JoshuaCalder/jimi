@@ -68,7 +68,6 @@ def add_tracks_to_tracklist(user,track_list,playlist_id):
 
 def get_tracklist(admin,playlist_id):
     print(f"get tracks")
-    # params = {'fields': 'items(track(name,href,album(name,href)))'}
-    params = {'fields': 'items(track(name))'}
+    params = {'fields': 'items(track(name,href,album(name,href)),artist[0](name),id)'}
     response = make_get(f"https://api.spotify.com/v1/playlists/{playlist_id}/tracks",admin.user_access_token,params=params)
     return response['items']
