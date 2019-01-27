@@ -15,7 +15,7 @@ def create_party(request):
 	party_name = request.POST.get('party_name')
 	party_code = random.randint(100000, 999999)
 	Parties.objects.create(
-		party_admin = party_user,
+		party_admin = party_admin,
 		party_name = party_name,
 		party_code = party_code,
 	)
