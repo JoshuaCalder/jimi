@@ -20,17 +20,16 @@ def create_party(request):
 
 	admin_uuid = body['user_uuid']
 
-	user = Users.objects.get(user_uuid=admin_uuid)
+	admin = Users.objects.get(user_uuid=admin_uuid)
 
 	p = Parties.objects.create(
-		party_admin = body['party_admin'],
+		party_admin = admin_uuid,
 		party_name = body['party_name'],
 		party_code = party_code,
 	)
-	Users.objects.create(
-		user_id = body['party_admin'],
-		user_party = p
-	)
+	admin.user_party = p
+	
+	print(f"Party Created with code {party_code}")
 	return HttpResponse(party_code)
 
 # @post user_id - Spotify user id

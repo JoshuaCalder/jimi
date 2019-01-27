@@ -2,7 +2,7 @@ from django.db import models
 import uuid
 
 class Parties(models.Model):
-	party_admin = models.CharField(max_length=100)
+	party_admin = models.UUIDField(editable=False)
 	party_name = models.CharField(max_length=100)
 	party_code = models.IntegerField(unique=True)
 
