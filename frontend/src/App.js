@@ -10,16 +10,16 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-			<BrowserRouter> 
+			<BrowserRouter>
 				<Route path='/joinParty' render={() => <JoinParty /> } />
 			</BrowserRouter>
-			<BrowserRouter>	
+			<BrowserRouter>
 				<Route path='/login' render={ () => <LogIn />} />
 			</BrowserRouter>
-			<BrowserRouter>	
+			<BrowserRouter>
 				<Route path='/signUp' render={ () => <SignUp />} />
 			</BrowserRouter>
-			<BrowserRouter>	
+			<BrowserRouter>
 				<Route path='/createParty' render={ () => <CreateParty />} />
 			</BrowserRouter>
         </header>

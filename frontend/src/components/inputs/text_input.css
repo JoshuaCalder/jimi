@@ -1,0 +1,20 @@
+@font-face {
+  font-family: Circular;
+  src: url(../../resources/fonts/CircularStd-Bold.otf);
+}
+
+.form-group{
+  font-family: Circular;
+}
+
+.textbox-align{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#spotifyUsername, #email, #password {
+  border-radius: 8px;
+  border-style: none;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+}
