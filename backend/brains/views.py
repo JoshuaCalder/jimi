@@ -4,6 +4,7 @@ from django.http import HttpResponse
 import random, json
 
 from brains.auth import STATE_KEY,generate_state,get_redirect_url,get_access_tokens
+from brains.spotify_api import get_user_id
 
 from brains.models import Parties
 from brains.models import Users
@@ -16,6 +17,11 @@ from brains.models import Users
 def create_party(request):
 	body = json.loads(request.body)
 	party_code = random.randint(100000, 999999)
+
+	admin_uuid = body['user_uuid']
+
+	user = Users.objects.get(user_uuid=admin_uuid)
+
 	p = Parties.objects.create(
 		party_admin = body['party_admin'],
 		party_name = body['party_name'],
@@ -68,14 +74,20 @@ def login(request):
 def callback(request):
 	#TODO: handle error states where the keys are not contained in the dict, check to see state===stored_state
 	code = request.GET.get('code')
-	state = request.GET.get('state')
-	stored_state = request.GET.get(STATE_KEY)
+	# state = request.GET.get('state')
+	# stored_state = request.GET.get(STATE_KEY)
 	
-	res = HttpResponse("good?")
-	res.delete_cookie(STATE_KEY)
 
-	# auth_options = get_auth_options(code)
-	# print(f'auth_options: {auth_options}')
+
 	token_dict = get_access_tokens(code)
+	access_token = token_dict['access_token']
+	user_id = get_user_id(access_token)
+	user = Users.objects.create(
+		user_id = user_id['id'],
+		user_access_token = access_token
+	)
+
+	res = redirect(f"http://localhost:3000/joinparty?uuid={user.user_uuid}")
+	res.delete_cookie(STATE_KEY)
 	return res
 

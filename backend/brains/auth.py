@@ -47,7 +47,5 @@ def get_auth_options(code):
 def get_access_tokens(code):
     auth_options = get_auth_options(code)
     response = requests.post('https://accounts.spotify.com/api/token',headers=auth_options['headers'],data=auth_options['data'])
-    print("here")
     response = json.loads(response.text)
-
     return response
