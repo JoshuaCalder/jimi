@@ -9,9 +9,10 @@ class Entrance extends Component{
 	render(){
 		return(
 			<div className="entrance-body">
-				<h2>Welcome to Jimi! To get started sign into your spotify account</h2>
+				<h2>Welcome to Jimi!</h2>
+				<p>To start playing music, connect your Spotify Account</p>
 				<div className="fluid">
-					<a href="http://localhost:8000/login"><button type="button" className="btn btn-success">Enter</button></a>
+					<a href="http://localhost:8000/login"><button type="button" className="btn btn-success">ENTER</button></a>
 				</div>
 			</div>
 		);

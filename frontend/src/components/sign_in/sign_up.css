@@ -79,5 +79,10 @@
 }
 
 .form-group{
-  margin-bottom: 0rem;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.textbox-align{
+  margin: 0px;
 }
