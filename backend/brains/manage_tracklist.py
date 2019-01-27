@@ -15,10 +15,10 @@ def create_playlist(admin):
     print(len(new_pl))
     return playlist_id
 
-def add_top_tracks(user,playlist_id):
+def add_top_tracks(user,admin,playlist_id):
     raw_track_list = spo.get_user_top_tracks(user.user_access_token)
     track_list = clean_raw_tracks(raw_track_list)
-    spo.add_tracks_to_tracklist(user,track_list,playlist_id)
+    spo.add_tracks_to_tracklist(admin,track_list,playlist_id)
     new_pl = spo.get_tracklist(user,playlist_id)
     print(len(new_pl))
     return

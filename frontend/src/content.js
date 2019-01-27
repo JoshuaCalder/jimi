@@ -35,17 +35,19 @@ class Content extends Component {
 	}
 	
 	getTrackList = ( partyCode ) =>{
-		let endpoint = '/party_top_tracks';
-		let body = {
-			party_code: this.state.partyCode,
-		}
+		let endpoint = '/party_top_tracks?party_code='+this.state.partyCode;
+		if(this.state.trackList !== null)
+			return;
 		//let sendBody = JSON.stringify(body);
 		//console.log(sendBody);
-		axios.post( endpoint, body )
+		axios.get( endpoint )
 			.then( response => {
-				let temp = JSON.parse(response);	
-				console.log(temp);
-
+				// console.log(response.data)
+				this.setState(
+					{
+						trackList:response.data.items
+					}
+				)
 			})
 			.catch( err => {
 				console.log(err);

@@ -15,7 +15,7 @@ class TrackList extends Component{
 		console.log(this.props.songList);
 		for( let i in this.props.songList){
 			let song = this.props.songList[i];
-			console.log(song);
+			// console.log(song);
 			trackList.push(
 					<Track 
 						track={this.props.songList[i].track}

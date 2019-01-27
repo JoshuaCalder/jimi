@@ -58,16 +58,18 @@ def make_playlist(admin):
     response = make_post(f"https://api.spotify.com/v1/users/{admin.user_id}/playlists",admin.user_access_token,headers=header,body=body)
     return response['id']
 
-def add_tracks_to_tracklist(user,track_list,playlist_id):
+def add_tracks_to_tracklist(admin,track_list,playlist_id):
     print(f"add tracks")
     header = {'Content-Type':'application/json'}
     body = {'uris':track_list}
-    response = make_post(f"https://api.spotify.com/v1/playlists/{playlist_id}/tracks",user.user_access_token, headers=header,body=body)
+    response = make_post(f"https://api.spotify.com/v1/playlists/{playlist_id}/tracks",admin.user_access_token, headers=header,body=body)
 
     return None
 
 def get_tracklist(admin,playlist_id):
     print(f"get tracks")
+    # params = {'limit': '2','fields':'items(track(name,href,album(name,href)))'}
     params = {'fields': 'items(track(name,href,album(name,href)),artist[0](name),id)'}
     response = make_get(f"https://api.spotify.com/v1/playlists/{playlist_id}/tracks",admin.user_access_token,params=params)
-    return response['items']
+    print(len(response))
+    return response

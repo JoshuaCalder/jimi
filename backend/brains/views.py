@@ -47,7 +47,9 @@ def join_party(request):
 	user.user_party = user_party
 	user.save()
 
-	add_top_tracks(user,user_party.party_playlist_id)
+	admin = Users.objects.get(user_uuid=user_party.party_admin)
+
+	add_top_tracks(user,admin,user_party.party_playlist_id)
 
 	print(f"Party joined")
 	return HttpResponse('success')
@@ -56,8 +58,7 @@ def join_party(request):
 # @param party_id
 # returns list of all top songs associated with a party
 def party_top_tracks(request):
-	body = json.loads(request.body)
-	party_code = body['party_code']
+	party_code = request.GET.get('party_code')
 
 	party_admin_uuid = Parties.objects.get(party_code=party_code).party_admin
 	admin = Users.objects.get(user_uuid=party_admin_uuid).user_access_token
@@ -66,8 +67,8 @@ def party_top_tracks(request):
 	admin = Users.objects.get(user_uuid=party.party_admin)
 
 	tracks = get_tracklist(admin,party.party_playlist_id)
-
-	return HttpResponse([tracks])
+	print(tracks)
+	return HttpResponse(json.dumps(tracks), content_type="application/json")
 
 
 def playlist_from_partycode(request):
