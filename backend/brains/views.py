@@ -73,11 +73,13 @@ def login(request):
 def callback(request):
 	#TODO: handle error states where the keys are not contained in the dict, check to see state===stored_state
 	code = request.GET.get('code')
-	# state = request.GET.get('state')
-	# stored_state = request.GET.get(STATE_KEY)
-	
-
-
+	#state = request.GET.get('state')
+	#stored_state = request.GET.get(STATE_KEY)
+        #if state is not stored_state:
+        #    res = redirect(f"http://localhost:3000/entrance")
+	#    res.delete_cookie(STATE_KEY)
+        #    return res 
+        
 	token_dict = get_access_tokens(code)
 	access_token = token_dict['access_token']
 	user_id = get_user_id(access_token)
@@ -87,6 +89,7 @@ def callback(request):
 	)
 
 	res = redirect(f"http://localhost:3000/joinparty?uuid={user.user_uuid}")
+
 	res.delete_cookie(STATE_KEY)
 	return res
 
