@@ -4,11 +4,11 @@
 ### to use backend
 $ cd backend
 
-create venv
+### create venv
 $ python3 -m venv venv
 
-activate virtual environment
+### activate virtual environment
 $ source venv/bin/activate
 
-install dependencies from requirements file
+### install dependencies from requirements file
 $ pip install -r requirements.txt
