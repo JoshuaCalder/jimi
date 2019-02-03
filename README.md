@@ -1,7 +1,7 @@
 # jimi
 ## jimi is a space-based spotify ai
 
-###to use backend
+### to use backend
 $ cd backend
 
 create venv
