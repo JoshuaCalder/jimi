@@ -1,5 +1,5 @@
 # jimi
-## jimi is a space-based spotify ai
+A space based platform for generating coloborative playlists.
 
 ## Requirements
 * Python3
